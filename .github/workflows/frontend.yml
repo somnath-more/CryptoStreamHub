@@ -1,0 +1,82 @@
+name: Frontend Deployment
+on:
+    push:
+      branches:
+        - "deployment"
+        - "FE_Scaffolding"
+      paths:
+        - "frontend/**"
+        - ".github/workflows/frontend.yml"
+permissions:
+    id-token: write
+    contents: read
+jobs:
+    frontend-build:
+        runs-on: ubuntu-latest
+        timeout-minutes: 8
+        defaults:
+            run:
+                working-directory: frontend/
+        steps:
+            - name: checkout repository
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - name: setup node
+              uses: actions/setup-node@v3
+              with:
+                node-version: 20
+            - name: caching node modules
+              uses: actions/cache@v3
+              id: cache
+              with:
+                path: frontend/node_modules
+                key: ${{ runner.os }}-frontend-node_modules-${{ hashFiles('frontend/package.json') }}
+        
+            - name: install dependencies
+              if: steps.cache.outputs.cache-hit !=true
+              run: npm install
+            
+            # - name: create env file giving credentials for authO
+            #   run: |
+            #       echo "CLIENTID=${{ secrets.CLIENTID }}" >>.env
+            #       echo "DOMAIN=${{ secrets.DOMAIN }}" >>.env
+
+            - name: build the frontend 
+              run: npm run build
+
+            - name: Login to GHCR registry
+              uses: docker/login-action@v2
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.PAT_TOKEN }}
+
+            - name: Build and push
+              uses: docker/build-push-action@v3
+              with:
+                  context: frontend/
+                  push: true
+                  tags: |
+                    ghcr.io/${{ github.actor }}/cryptostreamhub:latest
+                    ghcr.io/${{ github.actor }}/cryptostreamhub:${{github.sha}}
+            - name: Deploy on EC2
+              env:
+               EC2_HOST: ${{ secrets.EC2_HOST }}
+               EC2_USER: ${{ secrets.EC2_USER }}
+               EC2_KEY: ${{ secrets.EC2_KEY }}
+               PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+              run: |
+                echo "$EC2_KEY" > key.pem
+                chmod 400 key.pem
+                ssh -o StrictHostKeyChecking=no -i key.pem $EC2_HOST@$EC2_USER << EOF
+                docker login ghcr.io -u ${{ github.actor }} -p $PAT_TOKEN
+                docker pull ghcr.io/somnath-more/cryptostreamhub:${{ github.sha }}
+                docker stop frontend-portfolio || true
+                docker rm frontend-portfolio || true
+                docker run -itd -p 4000:80 --name=frontend-portfolio ghcr.io/somnath-more/cryptostreamhub:${{ github.sha }}
+                echo "Deployed on EC2 successfully!"
+                EOF
+                   
+
+            
