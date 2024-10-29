@@ -4,7 +4,9 @@
     local('GraphikRegular'),
     url(../public/assets/fonts/GraphikRegular.otf) format('truetype');
 }
-
+h1{
+  color: red;
+}
 @font-face {
   font-family: 'GraphikSemiBold';
   src:
