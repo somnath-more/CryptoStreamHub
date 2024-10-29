@@ -3,7 +3,7 @@ on:
     push:
       branches:
         - "deployment"
-        - "FE_scaffolding"
+        - "FE_Scaffolding"
       paths:
         - "frontend/**"
         - ".github/workflows/frontend.yml"
