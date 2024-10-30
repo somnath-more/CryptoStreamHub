@@ -18,8 +18,10 @@ export const evaluatePasswordStrength = (password: string) => {
     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   return passwordRegex.test(password);
 };
+// Define a type for the keys of CRYPTO_ICONS
+type CryptoKey = keyof typeof CRYPTO_ICONS;
 
-export const getCryptoIconById = (cryptokey: string) => {
+export const getCryptoIconById = (cryptokey: CryptoKey) => {
   if (cryptokey in CRYPTO_ICONS) {
     return CRYPTO_ICONS[cryptokey];
   }
@@ -27,39 +29,44 @@ export const getCryptoIconById = (cryptokey: string) => {
   return Bitcoin;
 };
 
-export const getCryptoIconByName = (cryptoName: string) => {
+type CRYPTO_ICONS_BY_NAME_KEY = keyof typeof CRYPTO_ICONS_BY_NAME;
+
+export const getCryptoIconByName = (cryptoName: CRYPTO_ICONS_BY_NAME_KEY) => {
   if (cryptoName in CRYPTO_ICONS_BY_NAME) {
     return CRYPTO_ICONS_BY_NAME[cryptoName];
   }
 
   return Bitcoin;
 };
-
-export const getCryptoNameById = (cryptoKey: string) => {
+type CRYPTO_NAME_LIST_KEY = keyof typeof CRYPTO_NAME_LIST;
+export const getCryptoNameById = (cryptoKey: CRYPTO_NAME_LIST_KEY) => {
   if (cryptoKey in CRYPTO_NAME_LIST) {
     return CRYPTO_NAME_LIST[cryptoKey];
   }
 
   return cryptoKey.toUpperCase();
 };
-
-export const getCryptoSymbolById = (cryptoKey: string) => {
+type CRYPTO_SYMBOL_LIST_KEY = keyof typeof CRYPTO_SYMBOL_LIST;
+export const getCryptoSymbolById = (cryptoKey: CRYPTO_SYMBOL_LIST_KEY) => {
   if (cryptoKey in CRYPTO_SYMBOL_LIST) {
     return CRYPTO_SYMBOL_LIST[cryptoKey];
   }
 
   return cryptoKey.toUpperCase();
 };
-
-export const getCryptoIdByKey = (cryptoKey: string, index: number) => {
+type CRYPTO_ID_LIST_KEY = keyof typeof CRYPTO_ID_LIST;
+export const getCryptoIdByKey = (
+  cryptoKey: CRYPTO_ID_LIST_KEY,
+  index: number
+) => {
   if (cryptoKey in CRYPTO_ID_LIST) {
     return CRYPTO_ID_LIST[cryptoKey];
   }
 
   return index;
 };
-
-export const getCryptoKeyById = (id: number) => {
+type CRYPTO_KEY_LIST_KEY = keyof typeof CRYPTO_KEY_LIST;
+export const getCryptoKeyById = (id: CRYPTO_KEY_LIST_KEY) => {
   if (id in CRYPTO_KEY_LIST) {
     return CRYPTO_KEY_LIST[id];
   }

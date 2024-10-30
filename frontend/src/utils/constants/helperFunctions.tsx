@@ -1,4 +1,6 @@
-export const getProfitOrLossPercentage = (data) => {
+import { GraphDataPoint } from 'components/organisms/WishlistCard';
+
+export const getProfitOrLossPercentage = (data: GraphDataPoint[]) => {
   const lowest = Math.min(...data.map((element) => element.amount));
   const first = data[0].amount;
   const last = data[data.length - 1].amount;
@@ -8,7 +10,7 @@ export const getProfitOrLossPercentage = (data) => {
     percentage,
   };
 };
-export const convertToShortFormNumber = (number) => {
+export const convertToShortFormNumber = (number: number) => {
   return Intl.NumberFormat('en-US', {
     notation: 'compact',
     maximumFractionDigits: 1,

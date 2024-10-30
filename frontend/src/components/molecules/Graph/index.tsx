@@ -1,7 +1,7 @@
 import { AreaChart, Area, ResponsiveContainer } from 'recharts';
 import React from 'react';
 
-type GraphStyleType = {
+export type GraphStyleType = {
   dataKey: string;
   stroke: string;
   fill: string;

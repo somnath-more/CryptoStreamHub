@@ -25,6 +25,7 @@ import Tether from '../../../public/assets/icons/Tether.svg';
 import USDCoin from '../../../public/assets/icons/USDCoin.svg';
 import { TransactionDataProps } from 'components/organisms/MyWalletCard';
 import { CryptoDataRecord } from 'components/model';
+import { GraphStyleType } from 'components/molecules/Graph';
 
 export const GRAPH_MOCK_POINTS_DATA = [
   {
@@ -97,16 +98,16 @@ export const SINGLE_GRAPH_MOCK_POINTS_DATA = [
   },
 ];
 
-export const INDIVIDUAL_GRAPH_DATA = [
+export const INDIVIDUAL_GRAPH_DATA: GraphStyleType[] = [
   {
     dataKey: 'uv',
     stroke: theme.palette.minet_error.main,
-    fill: theme.palette.minet_error[100],
+    fill: theme.palette.minet_error[100] ?? '',
   },
   {
     dataKey: 'pv',
     stroke: theme.palette.primary.main,
-    fill: theme.palette.primary[500],
+    fill: theme.palette.primary[500] ?? '',
   },
 ];
 export const DELIVERY_CARD_DATA = [
@@ -868,8 +869,8 @@ enum TransactionStatus {
 }
 
 enum PaymentType {
-  Purchased = 'purchased',
-  Sold = 'sold',
+  Purchased = 'Purchased',
+  Sold = 'Sold',
 }
 
 export const TRANSACTIONS_HISTORY = [

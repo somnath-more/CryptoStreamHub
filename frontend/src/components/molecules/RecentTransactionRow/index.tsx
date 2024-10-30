@@ -109,7 +109,7 @@ const RecentTransactionRow = ({
           <StatusTypoBox>
             <ChipContainer>
               <Chip
-                label={chipLabel === 'PURCHASED' ? 'Purchased' : 'Sold' }
+                label={chipLabel === 'PURCHASED' ? 'Purchased' : 'Sold'}
                 style={{
                   borderRadius: '100px',
                   background: theme.palette.minet_grey[100],

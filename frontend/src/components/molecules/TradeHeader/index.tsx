@@ -27,13 +27,13 @@ const StyledContainer = styled(Box)({
   padding: '24px',
   borderRadius: '4px',
   width: '100%',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
 });
 
 const StyledBox = styled(Box)({
   display: 'flex',
   flexDirection: 'row',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
 });
 
 const StyledBitCoinBox = styled(Box)({
@@ -48,7 +48,7 @@ const StyledInnerBox = styled(Box)({
 
 const StyledValueBox = styled(Box)({
   display: 'flex',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
 });
 
 const CustomData = styled(Box)({

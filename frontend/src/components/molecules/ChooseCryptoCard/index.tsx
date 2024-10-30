@@ -62,7 +62,7 @@ const ChooseCryptoCard = ({
             width: '100%',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
           }}
         >
           {cryptoCardLabel}

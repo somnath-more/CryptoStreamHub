@@ -121,21 +121,21 @@ const CryptoTableRow = ({
         <StyledFirstColumnBox>
           <Icon src={cryptoSrc} alt="coinName" width="42px" height="42px" />
           <StyledTypographyBox>
-            <StyledCryptoName children={cryptoName} variant="body1" />
+            <StyledCryptoName variant="body1">{cryptoName} </StyledCryptoName>
             <Typography
-              children={cryptoLabel}
               variant="overline"
               color={theme.palette.minet_text.medium_emphasis}
-            />
+            >
+              {cryptoLabel}
+            </Typography>
           </StyledTypographyBox>
         </StyledFirstColumnBox>
       </StyledFirstCell>
       <StyledSecondCell>
         <Typography
-          children={`$${cryptoPrice}`}
           variant="body2"
           color={theme.palette.minet_text.high_emphasis}
-        />
+        >{`$${cryptoPrice}`}</Typography>
       </StyledSecondCell>
       <StyledThirdCell>
         <Typography
@@ -152,10 +152,11 @@ const CryptoTableRow = ({
       </StyledThirdCell>
       <StyledFourthCell>
         <Typography
-          children={cryptMarketCap}
           variant="body2"
           color={theme.palette.minet_text.high_emphasis}
-        />
+        >
+          {cryptMarketCap}
+        </Typography>
       </StyledFourthCell>
       <StyledFifthCell>
         <Icon
