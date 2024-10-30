@@ -5,7 +5,7 @@ import CoinHistoryCard from 'components/organisms/CoinHistoryCard';
 import CoinOverview from 'components/organisms/CoinOverview';
 import Header from 'components/organisms/Header';
 import { DashBoard } from 'components/templates/DashboardTemplate/index.stories';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   GRAPH_TIME_ARRAY,
   SINGLE_GRAPH_MOCK_POINTS_DATA,
@@ -25,7 +25,7 @@ import {
 } from 'services/index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ITransactionTableRow } from 'components/molecules/TransactionTableRow';
-import { MinetStore, useUserContext } from '../../context';
+import { useUserContext } from '../../context';
 import { getCryptoIconByName } from 'utils/constants/helperFunction';
 
 export interface CoinDetailInterface {

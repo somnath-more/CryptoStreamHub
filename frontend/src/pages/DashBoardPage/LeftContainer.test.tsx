@@ -144,7 +144,7 @@ describe('render left container', () => {
   });
 
   it('should fetch and display data when a chip is clicked', async () => {
-    const { getByTestId } = render(
+    render(
       <ContextProvider>
         <LeftContainer />
       </ContextProvider>
@@ -168,7 +168,7 @@ describe('render left container', () => {
     });
   });
   it('should fetch and display data when a chip is clicked', async () => {
-    const { getAllByText } = render(
+    render(
       <ContextProvider>
         <LeftContainer />
       </ContextProvider>
@@ -181,7 +181,7 @@ describe('render left container', () => {
   });
 
   it('should fetch and display data when a chip is clicked', async () => {
-    const { getAllByText } = render(
+    render(
       <ContextProvider>
         <LeftContainer />
       </ContextProvider>

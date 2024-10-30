@@ -1,7 +1,7 @@
 import Header from 'components/organisms/Header';
 import WishlistCard from 'components/organisms/WishlistCard';
 import { DashBoard } from 'components/templates/DashboardTemplate/index.stories';
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   CRYPTO_NAMES_AND_SHORTCUTS,
   DASHBOARD_DISCOVER_ASSETS,
@@ -22,7 +22,7 @@ import Edit from '../../../public/assets/icons/edit.svg';
 import IconSelect from '../../../public/assets/icons/IconSelect.svg';
 import LeftBody from './LeftContainer';
 import { getByWatchListData } from 'services';
-import { MinetStore } from '../../context';
+import { useUserContext } from '../../context';
 import Button from 'components/atoms/Button';
 import { useNavigate } from 'react-router-dom';
 import theme from 'theme';
@@ -84,8 +84,9 @@ const StyledButton = styled(Button)({
 
 const DashBoardPage = () => {
   const navigate = useNavigate();
-  const { userDetails } = useContext(MinetStore);
-  const handleWatchLIst = (id, name) => {
+  const { userDetails } = useUserContext();
+
+  const handleWatchLIst = (id: number, name: string) => {
     navigate('/trade', {
       state: {
         id: getCryptoIdByKey(id),

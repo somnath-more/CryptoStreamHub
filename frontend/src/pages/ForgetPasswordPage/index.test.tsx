@@ -108,7 +108,6 @@ jest.mock('services', () => ({
 }));
 
 test('should show reset page when showVerification is true', async () => {
-  const onClickResetPage = jest.fn();
   const user = { data: [{ id: 1, name: 'John Doe' }] };
   getUserDetailsByEmail.mockImplementation(() => Promise.resolve(user));
   const { container, getByPlaceholderText, getByText } = render(
@@ -154,11 +153,10 @@ test('should show error message when email is not found', async () => {
 });
 
 test('should show the error msg for the reset code ', async () => {
-  const onClickResetPage = jest.fn();
   const user = { data: [{ id: 1, name: 'John Doe' }] };
   getUserDetailsByEmail.mockImplementation(() => Promise.resolve(user));
   const userDetails = [{ id: 1 }];
-  const { container, getByPlaceholderText, getByText } = render(
+  const { getByPlaceholderText, getByText } = render(
     <MinetStore.Provider value={{ userDetails }}>
       <ForgetPasswordPage />
     </MinetStore.Provider>
