@@ -3,7 +3,7 @@ import { StoryFn } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Organism/Header',
+  title: 'Organisms/Header',
   component: Header,
 };
 

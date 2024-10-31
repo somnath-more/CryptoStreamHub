@@ -5,6 +5,7 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import theme from '../src/theme/index';
 import '../src/index.css';
 import React from 'react';
+import ContextProvider from '../src/context/index';
 const minetViewPort = {
   minetPay: {
     name: 'minetPay',
@@ -17,8 +18,10 @@ const minetViewPort = {
 export const withMuiTheme = (Story) => (
   <ThemeProvider theme={theme}>
     <BrowserRouter>
+     <ContextProvider>
       <CssBaseline />
       <Story />
+      </ContextProvider>
     </BrowserRouter>
   </ThemeProvider>
 );
