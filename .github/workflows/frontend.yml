@@ -4,6 +4,7 @@ on:
       branches:
         - "deployment"
         - "FE_Scaffolding"
+        - "FE_atoms"
       paths:
         - "frontend/**"
         - ".github/workflows/frontend.yml"
