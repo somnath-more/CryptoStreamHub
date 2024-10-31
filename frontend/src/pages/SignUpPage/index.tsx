@@ -1,7 +1,7 @@
 import { Box, Stack, styled } from '@mui/material';
 import SignUp from 'components/organisms/SignUp';
 import LoginTemplate from 'components/templates/LoginTemplate';
-import { MinetStore } from '../../context';
+import { MinetStore, useUserContext } from '../../context';
 import { useContext } from 'react';
 import { postWalletDetails, saveNewUser } from 'services';
 import { useNavigate } from 'react-router-dom';
@@ -14,13 +14,7 @@ const SignUpStack = styled(Stack)({
   overflowY: 'scroll',
 });
 const SignUpPage = () => {
-  const context = useContext(MinetStore);
-  if (!context) {
-    throw new Error(
-      'MinetStore context is undefined. Please wrap the component tree in ContextProvider.'
-    );
-  }
-
+  const context = useUserContext();
   const { setNetworkError } = context;
   const navigate = useNavigate();
   const signUpclickHandler = (

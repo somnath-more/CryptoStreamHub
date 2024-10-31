@@ -1,4 +1,4 @@
-import { useAuth0 } from '@auth0/auth0-react';
+// import { useAuth0 } from '@auth0/auth0-react';
 import { Box, Stack, styled } from '@mui/material';
 import Login from 'components/organisms/Login';
 import LoginTemplate from 'components/templates/LoginTemplate';
@@ -14,16 +14,16 @@ const SignInStack = styled(Stack)({
 
 const SignInPage = () => {
   const navigate = useNavigate();
-  const { loginWithRedirect } = useAuth0();
+  // const { loginWithRedirect } = useAuth0();
   const handleForgotClick = () => {
     navigate('/forget-password');
   };
   const handleSocialClick = () => {
-    loginWithRedirect({
-      authorizationParams: {
-        connection: 'google-oauth2',
-      },
-    });
+    // loginWithRedirect({
+    //   authorizationParams: {
+    //     connection: 'google-oauth2',
+    //   },
+    // });
   };
   const handleSignupClick = () => {
     navigate('/sign-up');

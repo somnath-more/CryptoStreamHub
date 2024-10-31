@@ -12,13 +12,13 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <Auth0Provider
-    domain={'dev-7fn8jjj51tzy3flk.us.auth0.com'}
-    clientId={'Tf9dEDqlNaPMDubl8oi4tYyBCccSl5Nj'}
-    authorizationParams={{
-      redirect_uri: window.location.origin + '/authentication',
-    }}
-  >
+  // <Auth0Provider
+  //   domain={'dev-7fn8jjj51tzy3flk.us.auth0.com'}
+  //   clientId={'Tf9dEDqlNaPMDubl8oi4tYyBCccSl5Nj'}
+  //   authorizationParams={{
+  //     redirect_uri: window.location.origin + '/authentication',
+  //   }}
+  // >
     <ThemeProvider theme={theme}>
       <ContextProvider>
         <BrowserRouter>
@@ -27,5 +27,5 @@ root.render(
         </BrowserRouter>
       </ContextProvider>
     </ThemeProvider>
-  </Auth0Provider>
+  // </Auth0Provider>
 );

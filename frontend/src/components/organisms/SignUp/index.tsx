@@ -14,7 +14,7 @@ import {
   SIGN_UP_ORGANISM,
   THIRD_PARTY_CARD,
 } from 'utils/constants';
-import { useAuth0 } from '@auth0/auth0-react';
+// import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 
 const Middle = styled(Stack)({
@@ -151,13 +151,13 @@ const SignUp = ({ onClick }: ISignUpProps) => {
     navigate('/login');
   };
 
-  const { loginWithRedirect } = useAuth0();
+  // const { loginWithRedirect } = useAuth0();
   const thirdPartyClickHandler = () => {
-    loginWithRedirect({
-      authorizationParams: {
-        connection: 'google-oauth2',
-      },
-    });
+    // loginWithRedirect({
+    //   authorizationParams: {
+    //     connection: 'google-oauth2',
+    //   },
+    // });
   };
   const btnDisable =
     inputValues.email.length === 0 ||
